@@ -120,7 +120,15 @@ The random forest classifier yielded promising results for our prediction task. 
 ## Fairness Analysis
 
 ### Accuracy Analysis
-For our fairness assessment, we have categorized the test dataset into two groups: power outages happening in spring or fall and those happening in summer or winter.  Our primary evaluation metric is recall. We propose a null hypothesis asserting that our model's recall for determining the season the outage occurs is roughly equivalent across all cases, with any observed differences attributable to random variability. Conversely, our alternative hypothesis suggests that the model demonstrates unfairness, with a higher accuracy for less severe power outages than for severe ones. We have selected the accuracy disparity between less severe and severe outages as our test statistic, with a significance level of 0.01. After running a permutation test 5,000 times, we obtained a p-value of 0.1286, which exceeds our significance level. This outcome leads us to retain the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert its complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if it is 'truly fair'.
+For our fairness assessment, we have categorized the test dataset into two groups: power outages happening in spring or fall and those happening in summer or winter.  Our primary evaluation metric is recall. 
+### Null Hypothesis
+We propose a null hypothesis asserting that our model's recall for determining the season when the outage occurs is roughly equivalent between the two groups, with any observed differences attributable to random variability. 
+### Alternative hypothesis
+Conversely, our alternative hypothesis suggests that the model demonstrates unfairness, with a higher recall for less severe power outages than for severe ones.
+### Test Statistic & Significance level
+We have selected the accuracy disparity between less severe and severe outages as our test statistic, with a significance level of 0.01. 
+### Result
+After running a permutation test 5,000 times, we obtained a p-value of 0.1286, which exceeds our significance level. This outcome leads us to retain the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert its complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if it is 'truly fair'.
 
 <iframe src="assets/fair_test.html" width=800 height=600 frameBorder=0></iframe>
 
