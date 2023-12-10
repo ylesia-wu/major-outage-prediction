@@ -8,7 +8,7 @@ A power outage is defined as the loss of the electrical power network supply to 
 
 Determining whether a power outage event is considered major is important for local authorities and organizations to take care of the ramifications of the outage. However, it is unlikely that information about the two criteria for a major outage, the number of people affected and the amount of unplanned loss, will be available right after an outage ends. Thus, determining whether an outage event is major is a crucial problem to be solved by a prediction model.
 
-We will be using a binary classification model to predict whether an outage event is major. Since we are more concerned with correctly predicting those power outages that are indeed major, we will be using recall as our metric for examining model performance. 
+We will be using a binary classification model to predict whether an outage event is major. Since we want our model to accurately classify both major and non-major events, we will be using accuracy as our metric for examining model performance. 
 
 ### Data Cleaning
 
@@ -50,7 +50,7 @@ We choose to classify whether a power outage is major because understanding the 
 Using `CAUSE.CATEGORY` as the only feature for prediction can achieve an accuracy of 85%-90% on the test set, but once it is used along with other features, it overshadows all other features. We will not be using `CAUSE.CATEGORY` as one of our features in both the baseline and the final models because we want to build a model that takes into account more factors, even if the other features will not have a performance that is as impressive as using only CAUSE.CATEGORY. We will be exploring other features that are available. Usually, we want to predict whether an outage was major right after it ended. At the time of prediction, we will not be able to immediately count the number of people affected or the amount of loss. Instead, we only have access to real-time information related to the outage, such as the aggregate data of local customers, and basic information about the specific outage, such as the time the outage happened and how long it lasted. 
 
 ### Metric for Evaluation
-To evaluate the model's performance, we could have chosen metrics such as accuracy or precision. However, we are more interested in correctly identifying those events that are indeed major and not mistakenly dismissing them as non-major. Thus, we decided to use recall as our metric for evaluation. In our case, recall is the proportion of correctly identified major events out of all major events. On the other hand, accuracy measures the overall correctness of a model but lacks a specific focus, and precision cares about the proportion of actual major outages out of all outages that are classified as major, in which our model has slightly less interest. 
+To evaluate the model's performance, we could have chosen metrics such as precision or recall. However, we are interested in correctly identifying both outages that are major and non-major and not mistakenly classify one as the other. Thus, we decided to use accuracy as our metric for evaluation. In our case, accuracy is the proportion of correctly classified outages out of all outages. On the other hand, precision measures the proportion of actual major outages out of all outages that are classified as major, and recall measures the proportion of correctly identified major outages out of all actual major outages, both of these aspects are of less interest to our problem. 
 
 ---
 
