@@ -12,7 +12,7 @@ We will be using a binary classification model to predict whether an outage even
 
 ### Data Cleaning
 
-Just like what we have done in the previous analysis, which can be found [here](https://github.com/ylesia-wu/power-outage-analysis), we have converted the `xlsx` file into `csv` file, removed unnecessary rows and columns, converted the data type of each column as appropriate, and create new `pd.Timestamp` columns by combining existing columns. In addition, we created our response variable column `IS.MAJOR` by combining information from `CUSTOMERS.AFFECTED` and `DEMAND.LOSS.MW` columns based on the definition of major outages: that impacted at least 50,000 customers or caused an unplanned firm load loss of at least 300 MW. To handle missing values in relevant columns, we used imputation with appropriate methods such as probabilistic imputation. Last but not least, we split our dataset into a train set and a test set in the proportion of 3 to 1. 
+Just like what we have done in the previous analysis, which can be found [here](https://github.com/ylesia-wu/power-outage-analysis), we have converted the `xlsx` file into `csv` file, removed unnecessary rows and columns, converted the data type of each column as appropriate, and create new `pd.Timestamp` columns by combining existing columns. In addition, we created our response variable column `IS.MAJOR` by combining information from `CUSTOMERS.AFFECTED` and `DEMAND.LOSS.MW` columns based on the definition of major outages: outages that impacted at least 50,000 customers or caused an unplanned firm load loss of at least 300 MW. To handle missing values in relevant columns, we used imputation with appropriate methods such as probabilistic imputation. Last but not least, we split our dataset into a train set and a test set in the proportion of 3 to 1. 
 
 Here are the first few rows of our train set:
 
@@ -38,13 +38,13 @@ Here are the first few rows of our test set:
 
 
 ### Prediction Problem: Classification
-We are doing a binary classification to classify whether a power outage is major, which means `CUSTOMERS.AFFECTED` is greater than or equal to 50,000 and `DEMAND.LOSS.MW` is greater than or equal to 300. We will be working with different models and compare their performances on the prediction task.
+We are doing a binary classification to classify whether a power outage is major, which means `CUSTOMERS.AFFECTED` is greater than or equal to 50,000 and `DEMAND.LOSS.MW` is greater than or equal to 300. We will be working with different models and comparing their performances on the prediction task.
 
 ### Response Variable
 The response variable, `IS.MAJOR`, is a binary variable indicating whether a power outage is major or not. It has two possible values: True for being a major outage event and False for not being a major outage event.
 
 ### Justification for Response Variable
-We choose to classify whether a power outage is major because understanding the severity of an outage that just happened is very crucial for local authorities and organizations to handle the ramifications of the event.  
+We choose to classify whether a power outage is major because understanding the severity of an outage in real-time is crucial for local authorities and organizations to make informed decisions and handle the ramifications of the events.
 
 ### Features
 Using `CAUSE.CATEGORY`` as the only feature for prediction can achieve an accuracy of 85%-90% on the test set, but once it is used along with other features, it overshadows all other features. We will not be using CAUSE.CATEGORY as one of our feature in both the baseline and the final models because we want to build a model that takes into account more factors, even if the other features will not have a performance that is as impressive as using only CAUSE.CATEGORY. We will be exploring other features that are available. Usually, we want to predict whether an outage was major right after it ended. At the time of prediction, we will not be able to immediately count the number of people affected or the amound of loss. Instead, we only have access to information indirectly related to the outage, such as the aggregate data of local customers, and basic information about the specific outage, such as the time the outage happened and how long it lasted. 
