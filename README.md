@@ -77,18 +77,14 @@ For the testing set, the model achieved an accuracy of 68.23%, a precision of 68
 | Precision       | 68.26%  |
 | Recall          | 68.23%  |
 
-In our dataset, 53% of the observations are major outages, whereas around 46% are not. We think the accuracy score is not high enough because, if the model predicts all outages to be true, it will have an accuracy of around 53%. The accuracy we have right now is not very big of an improvement from 53%. 
+In our dataset, 53% of the observations are major outages, whereas around 46% are not. 
 
 | IS.MAJOR | Probability  |
 |----------|--------------|
 | True     | 0.532595     |
 | False    | 0.467405     |
 
-It achieves a relatively high accuracy on both the training and testing sets, indicating that it can effectively classify whether a power outage occurs in the West Climate region or not. However, it is important to note that the precision and recall scores are relatively lower, which suggests that the model may have some difficulty in correctly identifying positive instances (outages in the West Climate region). Further evaluation and refinement may be necessary to improve these scores and ensure a more balanced performance across all classes.
-
-![](asset/confusionmatrix.jpg)
-
-The confusion matrix shows that there are 363 true positives (TP), 20 false negatives (FN), 37 true negatives (TN), and 23 false positives (FP). These values provide a detailed breakdown of the model's predictions, allowing for a deeper analysis of its performance.
+We think the accuracy score is not high enough because, if the model predicts all outages to be true, it will have an accuracy of around 53%. The accuracy we have right now is not very big of an improvement from 53%. 
 
 ### Summary
 Upon analyzing the performance of the current model, there are a few observations to consider. The model achieves high accuracy, indicating that it is able to make correct predictions for the majority of instances. However, the precision and recall scores are relatively lower compared to the accuracy.
