@@ -1,7 +1,7 @@
 # Major Power Outages Prediction 🔋
 
-By Yi Xing Ylesia Wu (xw001@ucsd.edu) & Junyue Lin (junyuelin608@gmail.com)
-
+By Yi Xing (Ylesia) Wu (xw001@ucsd.edu) & Junyue Lin (junyuelin608@gmail.com)
+Our exploratory data analysis on this dataset can be found [here]([url](https://ylesia-wu.github.io/major-outage-prediction/)).
 ## Framing the Problem
 
 A power outage is defined as the loss of the electrical power network supply to an end user. This occurrence engenders a disruption in the provision of electricity, leading to an absence of power in residences, commercial establishments, and other facilities. Power outages can have different degrees of severity. According to the Department of Energy, major power outages refer to those that impacted atleast 50,000 customers or caused an unplanned firm load loss of atleast 300 MW.
