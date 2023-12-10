@@ -88,6 +88,7 @@ We think the accuracy score is not high enough because, if the model predicts al
 
 ### Summary
 TODO
+
 ---
 
 ## Final Model
@@ -102,7 +103,14 @@ After conducting several trials, we have decided to use the random forest classi
 - `TIME.OF.DAY`: binned using KBinsDiscretizer. This feature represents the hour of the day when the outage started. It is obtained from the `OUTAGE.START` feature. 
 
 ### Model Performance
-Even before tuning any hyperparameters, our final model already outperformed the previous version. The test accuracy is approximately 93%. We utilized GridSearch to find the best hyperparameter values, including the number of estimators, maximum features, and minimum sample splits. This tuning resulted in a better-performing model, although the improvement was not significant. Ultimately, our accuracy reached around 93.5%. The recall is approximately 0.95, and the precision is around 0.67, showing significant improvement compared to our baseline model.
+
+We utilized `GridSearch` to find the best combination of hyperparameters, including the number of estimators, maximum depth, and minimum samples in a leaf node. This tuning results in a score of 77.86% for all three metrics: accuracy, precision, and recall, which is a significant improvement in the model performance compared to our baseline model. 
+
+| Metric          | Score   |
+|-----------------|---------|
+| Accuracy        | 77.86%  |
+| Precision       | 77.86%  |
+| Recall          | 77.86%  |
 
 ### Summary
 The random forest classifier yielded promising results for our prediction task. It enhanced the overall accuracy and recall of our model. Moreover, this process highlighted the distinct advantages of each model. Logistic regression performed well even with a limited number of features, but the random forest classifier demonstrated superior performance when additional features were incorporated, along with optimized hyperparameters. Model selection is a crucial step in this process, and fine-tuning hyperparameters can further enhance model performance.
