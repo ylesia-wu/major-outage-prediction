@@ -64,7 +64,9 @@ The model used in this prediction task is a logistic regression model. The selec
 * `TIME.OF.DAY`: This is an ordinal feature indicating the hour of the day when the power outage event started. It is a categorical variable obtained from the `OUTAGE.START` feature. 
 
 ### Encoding
-The model uses KBinsDiscretizer to bin the ordinal feature `TIME.OF.DAY` into intervals. This encoding technique uses one-hot encoding to create binary columns for each unique bin, indicating which bin the `TIME.OF.DAY` value falls in. The 'remainder' parameter in the ColumnTransformer is set to `drop`, which means columns that are not passed in as arguments will be dropped from the model fitting process.
+* During pre-processing, we used standardizer in sklearn to standardize the `OUTAGE.DURATION` feature. 
+* We used KBinsDiscretizer to bin the ordinal feature `TIME.OF.DAY` into intervals. This encoding technique uses one-hot encoding to create binary columns for each unique bin, indicating which bin the `TIME.OF.DAY` value falls in.
+* The 'remainder' parameter in the ColumnTransformer is set to `drop`, which means columns that are not passed in as arguments will be dropped from the model fitting process.
 
 ### Model Performance
 The model achieved a training accuracy of 94.04% and a testing accuracy of 90.29%. The precision and recall scores for the model are 0.617 and 0.649, respectively.
