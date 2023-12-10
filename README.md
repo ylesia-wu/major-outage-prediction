@@ -120,15 +120,15 @@ The random forest classifier yielded promising results for our prediction task. 
 ## Fairness Analysis
 
 ### Accuracy Analysis
-For our fairness assessment, we have categorized the test dataset into two groups: power outages happening in spring or fall and those happening in summer or winter.  Our primary evaluation metric is recall. 
+For our fairness assessment, we have categorized the test dataset into two groups: power outages happening in spring or fall and those happening in summer or winter. Our primary evaluation metric is accuracy. 
 ### Null Hypothesis
-We propose a null hypothesis asserting that our model's recall for determining the season when the outage occurs is roughly equivalent between the two groups, with any observed differences attributable to random variability. 
+We propose a null hypothesis asserting that our model's accuracy for determining whether an outage is major is roughly equivalent between the two groups, with any observed differences attributable to random variability. 
 ### Alternative hypothesis
-Conversely, our alternative hypothesis suggests that the model demonstrates unfairness, the recall scores between the two groups are different.
+Conversely, our alternative hypothesis is that the model demonstrates unfairness, and there is a significant difference between the accuracy scores of the two groups.
 ### Test Statistic & Significance level
-We have selected the recall disparity between two outage groups as our test statistic, with a significance level of 0.01. 
+We have selected the absolute difference in accuracy scores between the two season groups as our test statistic, with a significance level of 0.01. 
 ### Result
-After running a permutation test 5,000 times, we obtained a p-value of 0.7994, which exceeds our significance level. This outcome leads us to retain the null hypothesis, indicating that our model, based on this recall metric, is fair. However, we cannot definitively assert its complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if it is 'truly fair'.
+After running a permutation test 5,000 times, we obtained a p-value of 0.7984, which exceeds our significance level. This outcome leads us to fail to reject the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert the model's complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if the model is 'truly fair'.
 
 <iframe src="assets/fair_test.html" width=800 height=600 frameBorder=0></iframe>
 
