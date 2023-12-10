@@ -57,14 +57,14 @@ To evaluate the model's performance, we could have chosen metrics such as accura
 ## Baseline Model
 
 ### Model Description
-The model used in this prediction task is a logistic regression model. The selected features for the model are `OUTAGE.DURATION`, and `TIME.OF.DAY`. We standardized the `OUTAGE.DURATION` feature and binned the `TIME.OF.DAY` feature into intervals. 
+The model used in this prediction task is a logistic regression model. The selected features for the model are `OUTAGE.DURATION`, and `TIME.OF.DAY`. We standardized the `OUTAGE.DURATION` feature and binned the `TIME.OF.DAY` feature into intervals during pre-processing. 
 
 ### Features
 * `OUTAGE.DURATION`: This is a quantitative feature representing the duration of the power outage in minutes. It is a numerical variable.
-* `TIME.OF.DAY`: This is an ordinal feature indicating the hour of the day when the power outage event started. It is a categorical variable obtained from the `OUTAGE.START`. 
+* `TIME.OF.DAY`: This is an ordinal feature indicating the hour of the day when the power outage event started. It is a categorical variable obtained from the `OUTAGE.START` feature. 
 
 ### Encoding
-The model uses one-hot encoding to convert the categorical features ('NERC.REGION' and 'CAUSE.CATEGORY') into numerical representation. This encoding technique creates binary columns for each unique category, indicating the presence or absence of that category in the data. The 'remainder' parameter in the ColumnTransformer is set to 'passthrough', which means the numerical feature ('OUTAGE.DURATION(mins)') is passed through without any encoding.
+The model uses KBinsDiscretizer to bin the ordinal feature `TIME.OF.DAY` into intervals. This encoding technique uses one-hot encoding to create binary columns for each unique bin, indicating which bin the `TIME.OF.DAY` value falls in. The 'remainder' parameter in the ColumnTransformer is set to `drop`, which means columns that are not passed in as arguments will be dropped from the model fitting process.
 
 ### Model Performance
 The model achieved a training accuracy of 94.04% and a testing accuracy of 90.29%. The precision and recall scores for the model are 0.617 and 0.649, respectively.
