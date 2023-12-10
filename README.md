@@ -1,6 +1,7 @@
 # Major Power Outages Prediction 🔋
 
 By Yi Xing (Ylesia) Wu (xw001@ucsd.edu) & Junyue Lin (junyuelin608@gmail.com)
+
 Our exploratory data analysis on this dataset can be found [here]([url](https://ylesia-wu.github.io/major-outage-prediction/)).
 ## Framing the Problem
 
