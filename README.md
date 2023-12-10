@@ -77,7 +77,7 @@ For the testing set, the model achieved an accuracy of 68.23%, a precision of 68
 | Precision       | 68.26%  |
 | Recall          | 68.23%  |
 
-Based on the recall and other performance metrics, the current model can be considered bad. 
+In our dataset, 53% of the observations are major outages, whereas around 46% are not. We think the accuracy score is not high enough because, if the model predicts all outages to be true, it will have an accuracy of around 53%. The accuracy we have right now is not very big of an improvement from 53%. 
 
 | IS.MAJOR | Probability  |
 |----------|--------------|
