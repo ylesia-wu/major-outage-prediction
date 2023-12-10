@@ -70,17 +70,20 @@ The model used in this prediction task is a logistic regression model. The selec
 
 ### Model Performance
 For the testing set, the model achieved an accuracy of 68.23%, a precision of 68.26%, and a recall of 68.23%.
+
 | Metric          | Score   |
 |-----------------|---------|
 | Accuracy        | 68.23%  |
 | Precision       | 68.26%  |
 | Recall          | 68.23%  |
 
-Based on the precision and other performance metrics, the current model can be considered bad. 
+Based on the recall and other performance metrics, the current model can be considered bad. 
+
 | IS.MAJOR | Probability  |
 |----------|--------------|
 | True     | 0.532595     |
 | False    | 0.467405     |
+
 It achieves a relatively high accuracy on both the training and testing sets, indicating that it can effectively classify whether a power outage occurs in the West Climate region or not. However, it is important to note that the precision and recall scores are relatively lower, which suggests that the model may have some difficulty in correctly identifying positive instances (outages in the West Climate region). Further evaluation and refinement may be necessary to improve these scores and ensure a more balanced performance across all classes.
 
 ![](asset/confusionmatrix.jpg)
