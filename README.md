@@ -64,7 +64,7 @@ The model used in this prediction task is a logistic regression model. The selec
 * `TIME.OF.DAY`: This is an ordinal feature indicating the hour of the day when the power outage event started. It is a categorical variable obtained from the `OUTAGE.START` feature. 
 
 ### Encoding
-* During pre-processing, we used standardizer in sklearn to standardize the `OUTAGE.DURATION` feature. 
+* During pre-processing, we used the standardizer in sklearn to standardize the `OUTAGE.DURATION` feature. 
 * We used KBinsDiscretizer to bin the ordinal feature `TIME.OF.DAY` into intervals. This encoding technique uses one-hot encoding to create binary columns for each unique bin, indicating which bin the `TIME.OF.DAY` value falls in.
 * The 'remainder' parameter in the ColumnTransformer is set to `drop`, which means columns that are not passed in as arguments will be dropped from the model fitting process.
 
@@ -87,42 +87,19 @@ In our dataset, 53% of the observations are major outages, whereas around 46% ar
 We think the accuracy score is not high enough because, if the model predicts all outages to be true, it will have an accuracy of around 53%. The accuracy we have right now is not very big of an improvement from 53%. The recall, accuracy, precision scores are not much different from each other since our dataset is pretty balanced. 
 
 ### Summary
-Upon analyzing the performance of the current model, there are a few observations to consider. The model achieves high accuracy, indicating that it is able to make correct predictions for the majority of instances. However, the precision and recall scores are relatively lower compared to the accuracy.
-
-Precision represents the proportion of correctly predicted positive instances out of the total instances predicted as positive. In this context, it measures the ability of the model to correctly identify power outages occurring in the West Climate region. The precision score of 0.617 suggests that the model has some difficulty in precisely identifying these instances. There is a possibility of false positives, where the model incorrectly classifies a power outage as occurring in the West Climate region.
-
-Recall, also known as sensitivity or true positive rate, represents the proportion of correctly predicted positive instances out of the actual positive instances. It measures the ability of the model to capture all the power outages occurring in the West Climate region. The recall score of 0.649 indicates that the model captures a substantial portion of these instances but still misses some, resulting in false negatives.
-
-Considering the imbalanced nature of the classes (West Climate region vs. other regions), where the West Climate region may be a minority class, the lower precision and recall scores can be partly attributed to the class imbalance. It is important to note that optimizing for both precision and recall can be a trade-off, and the choice depends on the specific requirements of the problem. In some cases, precision might be more critical, while in others, recall might be the primary concern.
-
-To further improve the model's performance, additional steps can be taken, such as:
-
-- Feature engineering: Explore and include additional relevant features that might have a strong correlation with the West Climate region. These features could provide more discriminatory power and improve the model's predictive ability.
-
-- Hyperparameter tuning: Experiment with different hyperparameter settings for the logistic regression model or try alternative classification algorithms to find a configuration that better balances precision and recall.
-
-- Handling class imbalance: Implement techniques to address the class imbalance issue, such as oversampling the minority class (West Climate region) or using weighted loss functions to give more importance to the minority class during training.
-
-Upon all these analysis, we will continue and use these strategies to train our final model using random forest classifier, which will be better and easier at hyperparam tuning process.
-
+TODO
 ---
 
 ## Final Model
 
-### Model Choosing and features:
+### Model Choosing and Features:
 After conducting several trials, we have decided to use the random forest classifier as our model for two main reasons. Firstly, although logistic regression performs well as a baseline model, it has a limited number of tunable hyperparameters compared to other models. This makes it challenging for us to fine-tune the final model effectively. Secondly, our dataset contains numerous categorical features, suggesting that a classifier may be a better choice. Here are the features we have chosen for our model:
 
-- `CLIMATE.CATEGORY`: This feature is transformed using one-hot encoding. It provides valuable information about a region's climate, as different climate categories can have distinct patterns or effects on the predicted climate region.
-
-- `CAUSE.CATEGORY.DETAIL`: Transformed using one-hot encoding, this feature captures specific details about the cause category, which could influence the climate region.
-
-- `CAUSE.CATEGORY`: Also transformed using one-hot encoding, this feature represents the cause category of the outage and offers insights into the climate region.
-
-- `PC.REALGSP`: Scaled using StandardScaler, this feature represents the real gross state product and is standardized to have a mean of 0 and unit variance. It may be relevant for predicting the climate region.
-
-- `OUTAGE.DURATION(mins)`: Scaled using StandardScaler, this feature represents the duration of the outage in minutes. Scaling helps handle features with different scales and magnitudes. The duration of the outage may be related to the climate region, as regions with severe weather conditions may experience longer power outages.
-
-- `PI.UTIL.OFUSA(%)`: Scaled using StandardScaler, this feature represents the utility of power infrastructure in the USA. Scaling is applied for consistency and to prevent dominance by features with larger values. The distribution of power infrastructure across different areas can provide information about the climate.
+- `CLIMATE.REGION`: transformed using one-hot encoding. This feature represents the climate region of the place where the outage occurred.
+- `OUTAGE.DURATION`: scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values. This feature represents the duration of the outage in minutes. 
+- `IND.CUST.PCT`: scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values. This feature represents the percentage of industrial customers served in the U.S. state. 
+- `RES.CUST.PCT`: scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values. This feature represents the percentage of residential customers served in the U.S. state. 
+- `TIME.OF.DAY`: binned using KBinsDiscretizer. This feature represents the hour of the day when the outage started. It is obtained from the `OUTAGE.START` feature. 
 
 ### Model Performance
 Even before tuning any hyperparameters, our final model already outperformed the previous version. The test accuracy is approximately 93%. We utilized GridSearch to find the best hyperparameter values, including the number of estimators, maximum features, and minimum sample splits. This tuning resulted in a better-performing model, although the improvement was not significant. Ultimately, our accuracy reached around 93.5%. The recall is approximately 0.95, and the precision is around 0.67, showing significant improvement compared to our baseline model.
@@ -138,11 +115,5 @@ The random forest classifier yielded promising results for our prediction task. 
 For our fairness assessment, we have categorized the test dataset into two groups: power outages affecting more than 50,000 people and those affecting fewer than 50,000 individuals. An outage affecting more than 50,000 people is considered a severe outage. Our primary evaluation metric is accuracy. We propose a null hypothesis asserting that our model's accuracy for determining outage severity is roughly equivalent across all cases, with any observed differences attributable to random variability. Conversely, our alternative hypothesis suggests that the model demonstrates unfairness, with a higher accuracy for less severe power outages than for severe ones. We have selected the accuracy disparity between less severe and severe outages as our test statistic, with a significance level of 0.01. After running a permutation test 5,000 times, we obtained a p-value of 0.1286, which exceeds our significance level. This outcome leads us to retain the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert its complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if it is 'truly fair'.
 
 <iframe src="asset/fairness1.html" width=800 height=600 frameBorder=0></iframe>
-
-
-### R squared Analysis
-Our secondary evaluation metric is the R-squared value. We present a similar null hypothesis suggesting that our model's R-squared value for determining outage severity is approximately equal in all scenarios, and any discrepancies are due to random chance. Alternatively, our model could be unfair if the R-squared value is higher for less severe outages compared to severe ones. We've chosen the R-squared difference between less severe and severe outages as our test statistic, with a significance level of 0.01. Upon executing a permutation test 5,000 times, we obtained a p-value of 0.0112. As this value is above our significance level, we cannot reject the null hypothesis, suggesting that our model is fair based on the R-squared analysis. However, it is worth noting that this p-value is very close to our set significance level. Given that permutation test results can vary with each iteration, we cannot confidently assert that our model is fair based on the R-squared fairness analysis alone.
-
-<iframe src="asset/fairness2.html" width=800 height=600 frameBorder=0></iframe>
 
 ---
