@@ -124,11 +124,11 @@ For our fairness assessment, we have categorized the test dataset into two group
 ### Null Hypothesis
 We propose a null hypothesis asserting that our model's recall for determining the season when the outage occurs is roughly equivalent between the two groups, with any observed differences attributable to random variability. 
 ### Alternative hypothesis
-Conversely, our alternative hypothesis suggests that the model demonstrates unfairness, with a higher recall for less severe power outages than for severe ones.
+Conversely, our alternative hypothesis suggests that the model demonstrates unfairness, the recall scores between the two groups are different.
 ### Test Statistic & Significance level
-We have selected the accuracy disparity between less severe and severe outages as our test statistic, with a significance level of 0.01. 
+We have selected the recall disparity between two outage groups as our test statistic, with a significance level of 0.01. 
 ### Result
-After running a permutation test 5,000 times, we obtained a p-value of 0.1286, which exceeds our significance level. This outcome leads us to retain the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert its complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if it is 'truly fair'.
+After running a permutation test 5,000 times, we obtained a p-value of 0.7994, which exceeds our significance level. This outcome leads us to retain the null hypothesis, indicating that our model, based on this recall metric, is fair. However, we cannot definitively assert its complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if it is 'truly fair'.
 
 <iframe src="assets/fair_test.html" width=800 height=600 frameBorder=0></iframe>
 
