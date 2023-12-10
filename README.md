@@ -113,7 +113,7 @@ We utilized `GridSearch` to find the best combination of hyperparameters, includ
 | Recall          | 77.86%  |
 
 ### Summary
-The random forest classifier yielded promising results for our prediction task. It enhanced the overall accuracy and recall of our model. Moreover, this process highlighted the distinct advantages of each model. Logistic regression performed well even with a limited number of features, but the random forest classifier demonstrated superior performance when additional features were incorporated, along with optimized hyperparameters. Model selection is a crucial step in this process, and fine-tuning hyperparameters can further enhance model performance.
+The random forest classifier yielded promising results for our prediction task. It enhanced the overall accuracy, precision, and recall of our model. Model selection is a crucial step in this process, and fine-tuning hyperparameters can further enhance model performance.
 
 ---
 
@@ -122,6 +122,6 @@ The random forest classifier yielded promising results for our prediction task. 
 ### Accuracy Analysis
 For our fairness assessment, we have categorized the test dataset into two groups: power outages affecting more than 50,000 people and those affecting fewer than 50,000 individuals. An outage affecting more than 50,000 people is considered a severe outage. Our primary evaluation metric is accuracy. We propose a null hypothesis asserting that our model's accuracy for determining outage severity is roughly equivalent across all cases, with any observed differences attributable to random variability. Conversely, our alternative hypothesis suggests that the model demonstrates unfairness, with a higher accuracy for less severe power outages than for severe ones. We have selected the accuracy disparity between less severe and severe outages as our test statistic, with a significance level of 0.01. After running a permutation test 5,000 times, we obtained a p-value of 0.1286, which exceeds our significance level. This outcome leads us to retain the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert its complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if it is 'truly fair'.
 
-<iframe src="asset/fairness1.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="asset/fair_test.html" width=800 height=600 frameBorder=0></iframe>
 
 ---
