@@ -69,13 +69,13 @@ The model used in this prediction task is a logistic regression model. The selec
 * The 'remainder' parameter in the ColumnTransformer is set to `drop`, which means columns that are not passed in as arguments will be dropped from the model fitting process.
 
 ### Model Performance
-For the testing set, the model achieved an accuracy of 71.09%, a precision of 71.38%, and a recall of 71.09%.
+For the testing set, the model achieved an accuracy of 67.97%, a precision of 68.06%, and a recall of 67.97%.
 
 | Metric          | Score   |
 |-----------------|---------|
-| Accuracy        | 71.09%  |
-| Precision       | 71.38%  |
-| Recall          | 71.09%  |
+| Accuracy        | 67.97%  |
+| Precision       | 68.06%  |
+| Recall          | 67.97%  |
 
 In our dataset, 53% of the observations are major outages, whereas around 46% are not. 
 
@@ -104,13 +104,13 @@ After conducting several trials, we have decided to use the random forest classi
 
 ### Model Performance
 
-We utilized `GridSearch` to find the best combination of hyperparameters, including the number of estimators, maximum depth, and minimum samples in a leaf node. This tuning results in a score of around 76.82% for all three metrics: accuracy, precision, and recall, which is a significant improvement in the model performance compared to our baseline model. 
+We utilized `GridSearch` to find the best combination of hyperparameters, including the number of estimators, maximum depth, and minimum samples in a leaf node. This tuning results in a score of around 77.86% for all three metrics: accuracy, precision, and recall, which is a significant improvement in the model performance compared to our baseline model. 
 
 | Metric          | Score   |
 |-----------------|---------|
-| Accuracy        | 76.82%  |
-| Precision       | 76.81%  |
-| Recall          | 76.82%  |
+| Accuracy        | 77.86%  |
+| Precision       | 77.85%  |
+| Recall          | 77.86%  |
 
 ### Summary
 The random forest classifier yielded promising results for our prediction task. It enhanced the overall accuracy, precision, and recall of our model. Model selection is a crucial step in this process, and fine-tuning hyperparameters can further enhance model performance.
@@ -128,7 +128,7 @@ Conversely, our alternative hypothesis is that the model demonstrates unfairness
 ### Test Statistic & Significance level
 We have selected the absolute difference in accuracy scores between the two season groups as our test statistic, with a significance level of 0.01. 
 ### Result
-After running a permutation test 5,000 times, we obtained a p-value of 0.9072, which exceeds our significance level. This outcome leads us to fail to reject the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert the model's complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if the model is 'truly fair'.
+After running a permutation test 5,000 times, we obtained a p-value of 0.801, which exceeds our significance level. This outcome leads us to fail to reject the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert the model's complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if the model is 'truly fair'.
 
 <iframe src="assets/fair_test.html" width=800 height=600 frameBorder=0></iframe>
 
