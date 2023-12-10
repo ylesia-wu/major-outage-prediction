@@ -73,9 +73,9 @@ For the testing set, the model achieved an accuracy of 68.23%, a precision of 68
 
 | Metric          | Score   |
 |-----------------|---------|
-| Accuracy        | 68.23%  |
-| Precision       | 68.26%  |
-| Recall          | 68.23%  |
+| Accuracy        | 71.09%  |
+| Precision       | 71.38%  |
+| Recall          | 71.09%  |
 
 In our dataset, 53% of the observations are major outages, whereas around 46% are not. 
 
@@ -87,7 +87,7 @@ In our dataset, 53% of the observations are major outages, whereas around 46% ar
 We think the accuracy score is not high enough because, if the model predicts all outages to be true, it will have an accuracy of around 53%. The accuracy we have right now is not very big of an improvement from 53%. The recall, accuracy, precision scores are not much different from each other since our dataset is pretty balanced. 
 
 ### Summary
-TODO
+Although our model is balanced in terms of different evaluation metrics, there is still room for overall improvement. To improve our model, we will conduct further exploratory analysis to look for additional features for our model, experiment with different classification algorithms, and fine-tune the hyperparameters.
 
 ---
 
@@ -108,9 +108,9 @@ We utilized `GridSearch` to find the best combination of hyperparameters, includ
 
 | Metric          | Score   |
 |-----------------|---------|
-| Accuracy        | 77.86%  |
-| Precision       | 77.86%  |
-| Recall          | 77.86%  |
+| Accuracy        | 76.82%  |
+| Precision       | 76.81%  |
+| Recall          | 76.82%  |
 
 ### Summary
 The random forest classifier yielded promising results for our prediction task. It enhanced the overall accuracy, precision, and recall of our model. Model selection is a crucial step in this process, and fine-tuning hyperparameters can further enhance model performance.
@@ -128,7 +128,7 @@ Conversely, our alternative hypothesis is that the model demonstrates unfairness
 ### Test Statistic & Significance level
 We have selected the absolute difference in accuracy scores between the two season groups as our test statistic, with a significance level of 0.01. 
 ### Result
-After running a permutation test 5,000 times, we obtained a p-value of 0.7984, which exceeds our significance level. This outcome leads us to fail to reject the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert the model's complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if the model is 'truly fair'.
+After running a permutation test 5,000 times, we obtained a p-value of 0.9072, which exceeds our significance level. This outcome leads us to fail to reject the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert the model's complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if the model is 'truly fair'.
 
 <iframe src="assets/fair_test.html" width=800 height=600 frameBorder=0></iframe>
 
