@@ -84,7 +84,7 @@ In our dataset, 53% of the observations are major outages, whereas around 46% ar
 | True     | 0.532595     |
 | False    | 0.467405     |
 
-We think the accuracy score is not high enough because, if the model predicts all outages to be true, it will have an accuracy of around 53%. The accuracy we have right now is not very big of an improvement from 53%. 
+We think the accuracy score is not high enough because, if the model predicts all outages to be true, it will have an accuracy of around 53%. The accuracy we have right now is not very big of an improvement from 53%. The recall, accuracy, precision scores are not much different from each other since our dataset is pretty balanced. 
 
 ### Summary
 Upon analyzing the performance of the current model, there are a few observations to consider. The model achieves high accuracy, indicating that it is able to make correct predictions for the majority of instances. However, the precision and recall scores are relatively lower compared to the accuracy.
