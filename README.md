@@ -69,7 +69,7 @@ The model used in this prediction task is a logistic regression model. The selec
 * The 'remainder' parameter in the ColumnTransformer is set to `drop`, which means columns that are not passed in as arguments will be dropped from the model fitting process.
 
 ### Model Performance
-For the testing set, the model achieved an accuracy of 68.23%, a precision of 68.26%, and a recall of 68.23%.
+For the testing set, the model achieved an accuracy of 71.09%, a precision of 71.38%, and a recall of 71.09%.
 
 | Metric          | Score   |
 |-----------------|---------|
@@ -104,7 +104,7 @@ After conducting several trials, we have decided to use the random forest classi
 
 ### Model Performance
 
-We utilized `GridSearch` to find the best combination of hyperparameters, including the number of estimators, maximum depth, and minimum samples in a leaf node. This tuning results in a score of 77.86% for all three metrics: accuracy, precision, and recall, which is a significant improvement in the model performance compared to our baseline model. 
+We utilized `GridSearch` to find the best combination of hyperparameters, including the number of estimators, maximum depth, and minimum samples in a leaf node. This tuning results in a score of around 76.82% for all three metrics: accuracy, precision, and recall, which is a significant improvement in the model performance compared to our baseline model. 
 
 | Metric          | Score   |
 |-----------------|---------|
