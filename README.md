@@ -47,22 +47,21 @@ The response variable, `IS.MAJOR`, is a binary variable indicating whether a pow
 We choose to classify whether a power outage is major because understanding the severity of an outage in real-time is crucial for local authorities and organizations to make informed decisions and handle the ramifications of the events.
 
 ### Features
-Using `CAUSE.CATEGORY`` as the only feature for prediction can achieve an accuracy of 85%-90% on the test set, but once it is used along with other features, it overshadows all other features. We will not be using CAUSE.CATEGORY as one of our feature in both the baseline and the final models because we want to build a model that takes into account more factors, even if the other features will not have a performance that is as impressive as using only CAUSE.CATEGORY. We will be exploring other features that are available. Usually, we want to predict whether an outage was major right after it ended. At the time of prediction, we will not be able to immediately count the number of people affected or the amound of loss. Instead, we only have access to information indirectly related to the outage, such as the aggregate data of local customers, and basic information about the specific outage, such as the time the outage happened and how long it lasted. 
+Using `CAUSE.CATEGORY`` as the only feature for prediction can achieve an accuracy of 85%-90% on the test set, but once it is used along with other features, it overshadows all other features. We will not be using `CAUSE.CATEGORY` as one of our features in both the baseline and the final models because we want to build a model that takes into account more factors, even if the other features will not have a performance that is as impressive as using only CAUSE.CATEGORY. We will be exploring other features that are available. Usually, we want to predict whether an outage was major right after it ended. At the time of prediction, we will not be able to immediately count the number of people affected or the amount of loss. Instead, we only have access to real-time information related to the outage, such as the aggregate data of local customers, and basic information about the specific outage, such as the time the outage happened and how long it lasted. 
 
 ### Metric for Evaluation
-To evaluate the model's performance, we could have chosed metrics such as accuracy or precision. However, we are more interested in correctly identifying those events that are indeed major and not mistakenly dismissing them as non-major. Thus, we decide to use recall as our metric for evaluation. In our case, recall is the proportion of correctly identified major events out of all major events. On the other hand, accuracy measures the overall correctness of a model but lacks a specific focus, and precision cares about the proportion of actual major outages out of all outages that are classified as major, to which our model has slightly less interest. 
+To evaluate the model's performance, we could have chosen metrics such as accuracy or precision. However, we are more interested in correctly identifying those events that are indeed major and not mistakenly dismissing them as non-major. Thus, we decided to use recall as our metric for evaluation. In our case, recall is the proportion of correctly identified major events out of all major events. On the other hand, accuracy measures the overall correctness of a model but lacks a specific focus, and precision cares about the proportion of actual major outages out of all outages that are classified as major, in which our model has slightly less interest. 
 
 ---
 
 ## Baseline Model
 
 ### Model Description
-The model used in this prediction task is a logistic regression model with one-hot encoding for categorical features. The selected features for the model are 'NERC.REGION', 'CAUSE.CATEGORY', and 'OUTAGE.DURATION(mins)'.
+The model used in this prediction task is a logistic regression model. The selected features for the model are `OUTAGE.DURATION`, and `TIME.OF.DAY`. We standardized the `OUTAGE.DURATION` feature and binned the `TIME.OF.DAY` feature into intervals. 
 
 ### Features
-'NERC.REGION': This is a nominal feature representing the NERC (North American Electric Reliability Corporation) region where the power outage occurred. It is a categorical variable.
-'CAUSE.CATEGORY': This is a nominal feature describing the category of the cause of the power outage. It is a categorical variable.
-'OUTAGE.DURATION(mins)': This is a quantitative feature representing the duration of the power outage in minutes. It is a numerical variable.
+* `OUTAGE.DURATION`: This is a quantitative feature representing the duration of the power outage in minutes. It is a numerical variable.
+* `TIME.OF.DAY`: This is an ordinal feature indicating the hour of the day when the power outage event started. It is a categorical variable obtained from the `OUTAGE.START`. 
 
 ### Encoding
 The model uses one-hot encoding to convert the categorical features ('NERC.REGION' and 'CAUSE.CATEGORY') into numerical representation. This encoding technique creates binary columns for each unique category, indicating the presence or absence of that category in the data. The 'remainder' parameter in the ColumnTransformer is set to 'passthrough', which means the numerical feature ('OUTAGE.DURATION(mins)') is passed through without any encoding.
