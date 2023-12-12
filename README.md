@@ -137,7 +137,7 @@ The random forest classifier yielded promising results for our prediction task. 
 ## Fairness Analysis
 
 ### Accuracy Analysis
-For our fairness assessment, we have categorized the test dataset into two groups: power outages happening in spring or fall and those happening in summer or winter. Our primary evaluation metric is accuracy. 
+For our fairness assessment, we have categorized the test dataset into two groups: power outages happening in spring or fall and those happening in summer or winter. Our primary evaluation metric is accuracy obtained from our fitted final model. 
 ### Null Hypothesis
 We propose a null hypothesis asserting that our model's accuracy for determining whether an outage is major is the same between the two groups, with any observed differences attributable to random variability. 
 ### Alternative hypothesis
