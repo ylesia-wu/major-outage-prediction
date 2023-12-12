@@ -119,7 +119,11 @@ After conducting several trials, we have decided to use the random forest classi
 
 ### Model Performance
 
-We utilized `GridSearch` to find the best combination of hyperparameters, including the number of estimators, maximum depth, and minimum samples in a leaf node. This tuning results in a score of around 77.86% for all three metrics: accuracy, precision, and recall, which is a significant improvement in the model performance compared to our baseline model. 
+- We utilized `GridSearch` to find the best combination of hyperparameters, including the number of estimators [100, 200], maximum depth [10, 20], and minimum samples [1, 2, 4, 10] in a leaf node.
+- The 'n_estimators'
+              'max_depth': [10, 20],
+              'min_samples_leaf': [1, 2, 4, 10]}
+- This tuning results in a score of around 77.86% for all three metrics: accuracy, precision, and recall, which is a significant improvement in the model performance compared to our baseline model. 
 
 | Metric          | Score   |
 |-----------------|---------|
