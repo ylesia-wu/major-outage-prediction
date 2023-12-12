@@ -114,7 +114,8 @@ After conducting several trials, we have decided to use the random forest classi
   - We believe the inclusion of `RES.CUST.PCT` would help with the prediction because if the percentage is high, the residential energy demand would also be high. As a result, power outages might have a major impact.
 - `TIME.OF.DAY`:
   - binned using KBinsDiscretizer.
-  - This feature represents the hour of the day when the outage started. It is obtained from the `OUTAGE.START` feature. 
+  - This feature represents the hour of the day when the outage started. It is obtained from the `OUTAGE.START` feature.
+  - We believe the inclusion of `TIME.OF.DAY` would help with the prediction because if the outage starts at the prime of the day with active human behaviors and higher energy demand, the outage might be major. Binning `TIME.OF.DAY` can help divide the day into different temporal periods, thus our model could be better at identifying patterns during business hours or nighttime. 
 
 ### Model Performance
 
