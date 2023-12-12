@@ -8,7 +8,7 @@ A power outage is defined as the loss of the electrical power network supply to 
 
 Determining whether a power outage event is considered major is important for local authorities and organizations to take care of the ramifications of the outage. However, it is unlikely that information about the two criteria for a major outage, the number of people affected and the amount of unplanned loss, will be available right after an outage ends. Thus, determining whether an outage event is major is a crucial problem to be solved by a prediction model.
 
-We will be using a binary classification model to predict whether an outage event is major. Since we want our model to accurately classify both major and non-major events, we will be using accuracy as our metric for examining model performance. 
+We will be using a binary classification model to predict whether an outage event is major. Since we want our model to accurately classify both major and non-major events, and our dataset is quite balanced, we will be using accuracy as our metric for examining model performance. 
 
 ### Data Cleaning
 
