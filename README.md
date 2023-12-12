@@ -107,9 +107,14 @@ After conducting several trials, we have decided to use the random forest classi
 - `IND.CUST.PCT`:
   - scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
   - This feature represents the percentage of industrial customers served in the U.S. state.
-  - We believe the inclusion of `IND.CUST.PCT` would help with prediction because 
-- `RES.CUST.PCT`: scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values. This feature represents the percentage of residential customers served in the U.S. state. 
-- `TIME.OF.DAY`: binned using KBinsDiscretizer. This feature represents the hour of the day when the outage started. It is obtained from the `OUTAGE.START` feature. 
+  - We believe the inclusion of `IND.CUST.PCT` would help with prediction because if the percentage is high, the industrial energy demand would also be high. As a result, power outages might have a major impact.
+- `RES.CUST.PCT`:
+  - scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
+  - This feature represents the percentage of residential customers served in the U.S. state.
+  - We believe the inclusion of `RES.CUST.PCT` would help with the prediction because if the percentage is high, the residential energy demand would also be high. As a result, power outages might have a major impact.
+- `TIME.OF.DAY`:
+  - binned using KBinsDiscretizer.
+  - This feature represents the hour of the day when the outage started. It is obtained from the `OUTAGE.START` feature. 
 
 ### Model Performance
 
