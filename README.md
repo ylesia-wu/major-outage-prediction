@@ -87,7 +87,7 @@ In our dataset, 53% of the observations are major outages, whereas around 46% ar
 We think the accuracy score is not high enough because, if the model predicts all outages to be true, it will have an accuracy of around 53%. The accuracy we have right now is not very big of an improvement from 53%. The recall, accuracy, precision scores are not much different from each other since our dataset is pretty balanced. 
 
 ### Summary
-Although our model is balanced in terms of different evaluation metrics, there is still room for overall improvement. To improve our model, we will conduct further exploratory analysis to look for additional features for our model, experiment with different classification algorithms, and fine-tune the hyperparameters.
+Considering the low accuracy score from our model, there is certainly room for improvement. To improve our model, we will conduct further exploratory analysis to look for additional features for our model, experiment with different classification algorithms, and fine-tune the hyperparameters.
 
 ---
 
