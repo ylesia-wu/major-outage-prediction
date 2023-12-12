@@ -96,9 +96,18 @@ Considering the low accuracy score from our model, there is certainly room for i
 ### Model Choosing and Features:
 After conducting several trials, we have decided to use the random forest classifier as our model for two main reasons. Firstly, although logistic regression performs well as a baseline model, it has a limited number of tunable hyperparameters compared to other models. This makes it challenging for us to fine-tune the final model effectively. Secondly, our dataset contains numerous categorical features, suggesting that a classifier may be a better choice. Here are the features we have chosen for our model:
 
-- `CLIMATE.REGION`: transformed using one-hot encoding. This feature represents the climate region of the place where the outage occurred. We believe the inclusion of `CLIMATE.REGION` would help with prediction because different climate regions often experience distinct weather patterns. Oftentimes, severe weather is the cause of the power outage. By incorporating `CLIMATE.REGION` as a feature, our model might be better at capturing variations in weather conditions that may influence the likelihood and impact of outages.
-- `OUTAGE.DURATION`: scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values. This feature represents the duration of the outage in minutes. 
-- `IND.CUST.PCT`: scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values. This feature represents the percentage of industrial customers served in the U.S. state. 
+- `CLIMATE.REGION`:
+  - transformed using one-hot encoding.
+  - This feature represents the climate region of the place where the outage occurred.
+  - We believe the inclusion of `CLIMATE.REGION` would help with prediction because different climate regions often experience distinct weather patterns. Oftentimes, severe weather is the cause of the power outage. By incorporating `CLIMATE.REGION` as a feature, our model might be better at capturing variations in weather conditions that may influence the likelihood and impact of outages.
+- `OUTAGE.DURATION`:
+  - scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
+  - This feature represents the duration of the outage in minutes.
+  - We believe the inclusion of `OUTAGE.DURATION` would help with prediction because the longer time it takes the power to restore, the more it might affect customers' lives and businesses. 
+- `IND.CUST.PCT`:
+  - scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
+  - This feature represents the percentage of industrial customers served in the U.S. state.
+  - We believe the inclusion of `IND.CUST.PCT` would help with prediction because 
 - `RES.CUST.PCT`: scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values. This feature represents the percentage of residential customers served in the U.S. state. 
 - `TIME.OF.DAY`: binned using KBinsDiscretizer. This feature represents the hour of the day when the outage started. It is obtained from the `OUTAGE.START` feature. 
 
