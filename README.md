@@ -97,24 +97,24 @@ Considering the low accuracy score from our model, there is certainly room for i
 After conducting several trials, we have decided to use the random forest classifier as our model for two main reasons. Firstly, although logistic regression performs well as a baseline model, it has a limited number of tunable hyperparameters compared to other models. This makes it challenging for us to fine-tune the final model effectively. Secondly, our dataset contains numerous categorical features, suggesting that a classifier may be a better choice. Here are the features we have chosen for our model:
 
 - `CLIMATE.REGION`:
-  - transformed using one-hot encoding.
+  - Transformed using one-hot encoding.
   - This feature represents the climate region of the place where the outage occurred.
-  - We believe the inclusion of `CLIMATE.REGION` would help with prediction because different climate regions often experience distinct weather patterns. Oftentimes, severe weather is the cause of the power outage. By incorporating `CLIMATE.REGION` as a feature, our model might be better at capturing variations in weather conditions that may influence the likelihood and impact of outages.
+  - We believe the inclusion of `CLIMATE.REGION` would help with prediction because different climate regions often experience distinct weather patterns. Severe weather is often the cause of a power outage. By incorporating `CLIMATE.REGION` as a feature, our model might be better at capturing variations in weather conditions that may influence the likelihood and impact of outages.
 - `OUTAGE.DURATION`:
-  - scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
+  - Scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
   - This feature represents the duration of the outage in minutes.
   - We believe the inclusion of `OUTAGE.DURATION` would help with prediction because the longer time it takes the power to restore, the more it might affect customers' lives and businesses. 
 - `IND.CUST.PCT`:
-  - scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
-  - This feature represents the percentage of industrial customers served in the U.S. state.
+  - Scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
+  - This feature represents the percentage of industrial customers served in the U.S. state where the outage occurs.
   - We believe the inclusion of `IND.CUST.PCT` would help with prediction because if the percentage is high, the industrial energy demand would also be high. As a result, power outages might have a major impact.
 - `RES.CUST.PCT`:
-  - scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
-  - This feature represents the percentage of residential customers served in the U.S. state.
+  - Scaled using StandardScaler. Scaling is applied for consistency and to prevent dominance by features with larger values.
+  - This feature represents the percentage of residential customers served in the U.S. state where the outage occurs.
   - We believe the inclusion of `RES.CUST.PCT` would help with the prediction because if the percentage is high, the residential energy demand would also be high. As a result, power outages might have a major impact.
 - `TIME.OF.DAY`:
-  - binned using KBinsDiscretizer.
-  - This feature represents the hour of the day when the outage started. It is obtained from the `OUTAGE.START` feature.
+  - Binned using KBinsDiscretizer.
+  - This feature represents the hour of the day when the outage started. It is obtained from the `OUTAGE.START` column.
   - We believe the inclusion of `TIME.OF.DAY` would help with the prediction because if the outage starts at the prime of the day with active human behaviors and higher energy demand, the outage might be major. Binning `TIME.OF.DAY` can help divide the day into different temporal periods, thus our model could be better at identifying patterns during business hours or nighttime. 
 
 ### Model Performance
