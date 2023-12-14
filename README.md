@@ -93,7 +93,7 @@ Considering the low accuracy score from our model, there is certainly room for i
 
 ## Final Model
 
-### Model Choosing and Features:
+### Model Choosing and Features
 After conducting several trials, we have decided to use the random forest classifier as our model for two main reasons. Firstly, although logistic regression performs well as a baseline model, it has a limited number of tunable hyperparameters compared to other models. This makes it challenging for us to fine-tune the final model effectively. Secondly, our dataset contains numerous categorical features, suggesting that a classifier may be a better choice. Here are the features we have chosen for our model:
 
 - `CLIMATE.REGION`:
