@@ -145,7 +145,7 @@ Conversely, our alternative hypothesis is that the model demonstrates unfairness
 ### Test Statistic & Significance level
 We have selected the absolute difference in accuracy scores between the two season groups as our test statistic, with a significance level of 0.01. 
 ### Result
-After running a permutation test 5,000 times, we obtained a p-value of 0.801, which exceeds our significance level. This outcome leads us to fail to reject the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert the model's complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if the model is 'truly fair'.
+After running a permutation test with 5,000 trials, we obtained a p-value of 0.801, which exceeds our significance level. This outcome leads us to fail to reject the null hypothesis, indicating that our model, based on this accuracy metric, is fair. However, we cannot definitively assert the model's complete fairness as the permutation test results are also contingent on random chance. Hence, we recommend further testing with more data to verify if the model is 'truly fair'.
 
 <iframe src="assets/fair_test.html" width=800 height=600 frameBorder=0></iframe>
 
