@@ -150,3 +150,7 @@ After running a permutation test with 5,000 trials, we obtained a p-value of 0.8
 <iframe src="assets/fair_test.html" width=800 height=600 frameBorder=0></iframe>
 
 ---
+
+## References
+
+https://www.sciencedirect.com/science/article/pii/S2352340918307182
