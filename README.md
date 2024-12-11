@@ -154,3 +154,12 @@ After running a permutation test with 5,000 trials, we obtained a p-value of 0.8
 ## References
 
 https://www.sciencedirect.com/science/article/pii/S2352340918307182
+
+
+| teamname          |   gamelength | side   |   result |   kills |   deaths |   assists |   firstdragon |   dragons |   heralds |   barons |   visionscore |   totalgold |   epic_objectives |
+|:------------------|-------------:|:-------|---------:|--------:|---------:|----------:|--------------:|----------:|----------:|---------:|--------------:|------------:|------------------:|
+| BoostGate Esports |         1446 | Blue   |        1 |      20 |        7 |        47 |             1 |         2 |         1 |        1 |           186 |       52523 |                 4 |
+| Dark Passage      |         1446 | Red    |        0 |       7 |       20 |        14 |             0 |         1 |         0 |        0 |           141 |       39782 |                 1 |
+| unknown team      |         2122 | Blue   |        1 |      31 |       20 |        60 |             0 |         2 |         0 |        1 |           251 |       72355 |                 3 |
+| unknown team      |         2122 | Red    |        0 |      20 |       31 |        23 |             1 |         3 |         1 |        1 |           251 |       66965 |                 5 |
+| unknown team      |         2099 | Blue   |        1 |      24 |        8 |        54 |             1 |         2 |         1 |        1 |           261 |       68226 |                 4 |
